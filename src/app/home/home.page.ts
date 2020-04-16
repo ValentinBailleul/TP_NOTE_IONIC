@@ -13,9 +13,14 @@ export class HomePage {
 
   title: string;
   imgData: string;
+  longitude: string;
+  latitude: string;
 
   // tslint:disable-next-line:max-line-length
-  constructor(private alertController: AlertController, private camera: Camera, private geolocation: Geolocation, private localNotifications: LocalNotifications) {}
+  constructor(private alertController: AlertController,
+              private camera: Camera,
+              private geolocation: Geolocation,
+              private localNotifications: LocalNotifications) {}
 
   updateTitle() {
     this.title = 'Mon Nouveau Titre';
@@ -49,8 +54,6 @@ export class HomePage {
     };
 
     this.camera.getPicture(options).then((imageData) => {
-      // imageData is either a base64 encoded string or a file URI
-      // If it's base64 (DATA_URL):
       console.log(imageData);
       this.imgData = 'data:image/jpeg;base64,' + imageData;
     }, (err) => {
@@ -83,19 +86,16 @@ export class HomePage {
     this.geolocation.getCurrentPosition().then((resp) => {
         console.log(resp.coords.latitude);
         console.log(resp.coords.longitude);
-      // resp.coords.latitude
-      // resp.coords.longitude
+        this.longitude = resp.coords.longitude.toString();
+        this.latitude = resp.coords.longitude.toString();
     }).catch((error) => {
       console.log('Error getting location', error);
     });
 
     const watch = this.geolocation.watchPosition();
     watch.subscribe((data) => {
-      // data can be a set of coordinates, or an error (if an error occurred).
         console.log(data.coords.latitude);
         console.log(data.coords.longitude);
-        // data.coords.latitude
-      // data.coords.longitude
     });
   }
 

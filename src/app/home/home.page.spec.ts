@@ -37,4 +37,14 @@ describe('HomePage', () => {
     component.updateTitle();
     expect(component.title).toBe('Mon Nouveau Titre');
   });
+
+  it('verification longitude', () => {
+    component.takeNotification();
+    expect(component.longitude).not.toEqual(null);
+  });
+
+  it('verification latitude', () => {
+    component.takeNotification();
+    expect(component.latitude).not.toEqual(null);
+  });
 });
