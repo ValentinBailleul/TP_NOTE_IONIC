@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { HomePage } from './home.page';
 import { Camera } from '@ionic-native/camera/ngx';
 
@@ -20,6 +21,6 @@ import { Camera } from '@ionic-native/camera/ngx';
     ])
   ],
   declarations: [HomePage],
-  providers: [Camera]
+  providers: [Camera, Geolocation, LocalNotifications]
 })
 export class HomePageModule {}
